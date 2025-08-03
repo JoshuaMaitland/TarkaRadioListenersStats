@@ -71,6 +71,11 @@ namespace TarkaRadioListenersStats
             GetListeners();
         }
 
+        private void linkLabelWebsite_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://tarkaradio.co.uk/"); // Opens the Tarka Radio website
+        }
+
         private async void GetListeners()
         {
             // Check if the computer is connected to the internet
