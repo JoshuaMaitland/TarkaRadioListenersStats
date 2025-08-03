@@ -32,6 +32,8 @@ namespace TarkaRadioListenersStats
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            Location = Properties.Settings.Default.Position;
+
             // Check if the computer is connected to the internet
             if (IsConnectedToInternet() == true)
             {
@@ -85,6 +87,14 @@ namespace TarkaRadioListenersStats
         private void alwaysOnTopToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TopMost = !TopMost;
+            Properties.Settings.Default.AlwaysOnTop = TopMost;
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Save the current position of the form when it is closed
+            Properties.Settings.Default.Position = Location;
+            Properties.Settings.Default.Save();
         }
     }
 }
