@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,13 +33,40 @@ namespace TarkaRadioListenersStats
             // Check if the computer is connected to the internet
             if (IsConnectedToInternet() == true)
             {
-
+                // If connected, get the listeners statistics
+                GetListeners();
             }
             else
             {
                 // Show a message box if not connected to the internet
                 MessageBox.Show("This program requires an internet connection. Please connect to the internet and try again.", "No Internet Connection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 Application.Exit();
+            }
+        }
+
+        private async void GetListeners()
+        {
+            // Create a single HttpClient instance to reuse throughout your application
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    // Get the listeners statistics from the server's URL
+                    HttpResponseMessage response = await client.GetAsync("http://uk3-vn.mixstream.net/:8088/7.html");
+                    // Check if the request was successful
+                    response.EnsureSuccessStatusCode();
+                    // Read response content
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    // Parse the response to extract listener statistics and remove both HTML tags and a comma
+                    string[] stats = responseBody.Replace("<html><body>", "").Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                    // Send them to the both labels
+                    lblListenersCount.Text = "Listeners Count: " + stats[0].Trim();
+                    lblListenersPeak.Text = "Listeners Peak: " + stats[2].Trim();
+                }
+                catch (HttpRequestException e)
+                {
+                    Console.WriteLine($"Request error: {e.Message}");
+                }
             }
         }
     }
