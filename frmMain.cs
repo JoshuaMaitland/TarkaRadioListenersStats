@@ -30,10 +30,43 @@ namespace TarkaRadioListenersStats
             return InternetGetConnectedState(out Desc, 0);
         }
 
+        #region Form Events
         private void frmMain_Load(object sender, EventArgs e)
         {
             Location = Properties.Settings.Default.Position;
 
+            // Get the listeners statistics
+            GetListeners();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Save the current position of the form when it is closed
+            Properties.Settings.Default.Position = Location;
+            Properties.Settings.Default.Save();
+        }
+        #endregion
+
+        #region Menu Events
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Assembly currentAssem = typeof(Program).Assembly;
+            var versionInfo = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location);
+            // Get the copyright info from versionInfo
+            var copyright = versionInfo.LegalCopyright;
+            // Show the message box
+            MessageBox.Show(currentAssem.GetAssemblyDescription() + "\n\n" + copyright, "About " + Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void alwaysOnTopToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TopMost = !TopMost;
+            Properties.Settings.Default.AlwaysOnTop = TopMost;
+        }
+        #endregion
+
+        private void timerRefresh_Tick(object sender, EventArgs e)
+        {
             // Get the listeners statistics
             GetListeners();
         }
@@ -72,35 +105,6 @@ namespace TarkaRadioListenersStats
                 MessageBox.Show("This program requires an internet connection. Please connect to the internet and try again.", "No Internet Connection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 Application.Exit();
             }
-        }
-
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Assembly currentAssem = typeof(Program).Assembly;
-            var versionInfo = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location);
-            // Get the copyright info from versionInfo
-            var copyright = versionInfo.LegalCopyright;
-            // Show the message box
-            MessageBox.Show(currentAssem.GetAssemblyDescription() + "\n\n" + copyright, "About " + Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void alwaysOnTopToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            TopMost = !TopMost;
-            Properties.Settings.Default.AlwaysOnTop = TopMost;
-        }
-
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            // Save the current position of the form when it is closed
-            Properties.Settings.Default.Position = Location;
-            Properties.Settings.Default.Save();
-        }
-
-        private void timerRefresh_Tick(object sender, EventArgs e)
-        {
-            // Get the listeners statistics
-            GetListeners();
         }
     }
 }
