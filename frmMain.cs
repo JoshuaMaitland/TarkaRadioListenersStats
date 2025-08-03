@@ -39,7 +39,7 @@ namespace TarkaRadioListenersStats
             GetListeners();
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             // Save the current position of the form when it is closed
             Properties.Settings.Default.Position = Location;
