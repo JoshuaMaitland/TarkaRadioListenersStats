@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.Net.Http;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -38,6 +39,13 @@ namespace TarkaRadioListenersStats
         #region Form Events
         private void frmMain_Load(object sender, EventArgs e)
         {
+            // Check for updates on application start
+            if (Application.ProductVersion != VersionChecker.GetNewVersionNumberFromGithubAPI())
+            {
+                var updateForm = new frmUpdateAvailable();
+                updateForm.ShowDialog();
+            }
+
             // Get the listeners statistics
             GetListeners();
         }
