@@ -29,6 +29,11 @@ namespace TarkaRadioListenersStats
             Text = Program.TitleCommit;
             // Set the form's always on top state to the saved state
             TopMost = Properties.Settings.Default.AlwaysOnTop;
+
+#if DEBUG
+            // Set a fixed size for the form in debug mode in order to show the word "[Debug]" in the title
+            Size = new Size(500, 200);
+#endif
         }
 
         public static bool IsConnectedToInternet()
