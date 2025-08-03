@@ -81,5 +81,10 @@ namespace TarkaRadioListenersStats
             // Show the message box
             MessageBox.Show(currentAssem.GetAssemblyDescription() + "\n\n" + copyright, "About " + Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void alwaysOnTopToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TopMost = !TopMost;
+        }
     }
 }
