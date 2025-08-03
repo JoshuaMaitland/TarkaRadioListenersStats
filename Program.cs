@@ -8,6 +8,18 @@ namespace TarkaRadioListenersStats
 {
     internal static class Program
     {
+        public static string TitleCommit
+        {
+            get
+            {
+                string title = Application.ProductName + " (Git Commit: " + ThisAssembly.Git.Commit + ")";
+#if DEBUG
+                title += " [Debug]";
+#endif
+                return title;
+            }
+        }
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

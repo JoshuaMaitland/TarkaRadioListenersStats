@@ -22,6 +22,11 @@ namespace TarkaRadioListenersStats
         public frmMain()
         {
             InitializeComponent();
+
+            // Set the form's position to the saved position
+            Location = Properties.Settings.Default.Position;
+            // Set the text on the form to the program's title (including the commit hash)
+            Text = Program.TitleCommit;
         }
 
         public static bool IsConnectedToInternet()
@@ -33,8 +38,6 @@ namespace TarkaRadioListenersStats
         #region Form Events
         private void frmMain_Load(object sender, EventArgs e)
         {
-            Location = Properties.Settings.Default.Position;
-
             // Get the listeners statistics
             GetListeners();
         }
