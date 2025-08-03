@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblListenersCount = new System.Windows.Forms.Label();
             this.lblListenersPeak = new System.Windows.Forms.Label();
+            this.timerRefresh = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // lblListenersCount
@@ -52,6 +54,11 @@
             this.lblListenersPeak.TabIndex = 1;
             this.lblListenersPeak.Text = "Listeners Peak: 0";
             // 
+            // timerRefresh
+            // 
+            this.timerRefresh.Enabled = true;
+            this.timerRefresh.Interval = 10000;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -72,6 +79,7 @@
 
         private System.Windows.Forms.Label lblListenersCount;
         private System.Windows.Forms.Label lblListenersPeak;
+        private System.Windows.Forms.Timer timerRefresh;
     }
 }
 
