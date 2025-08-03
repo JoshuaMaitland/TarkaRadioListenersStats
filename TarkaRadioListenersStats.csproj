@@ -4,6 +4,7 @@
     <OutputType>WinExe</OutputType>
     <UseWindowsForms>true</UseWindowsForms>
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+	<GitVersion>false</GitVersion>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>chart_bar.ico</ApplicationIcon>
