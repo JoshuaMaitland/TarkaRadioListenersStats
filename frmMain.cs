@@ -27,6 +27,8 @@ namespace TarkaRadioListenersStats
             Location = Properties.Settings.Default.Position;
             // Set the text on the form to the program's title (including the commit hash)
             Text = Program.TitleCommit;
+            // Set the form's always on top state to the saved state
+            TopMost = Properties.Settings.Default.AlwaysOnTop;
         }
 
         public static bool IsConnectedToInternet()
