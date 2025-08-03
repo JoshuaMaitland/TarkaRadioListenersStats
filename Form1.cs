@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Net.Http;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -68,6 +70,16 @@ namespace TarkaRadioListenersStats
                     Console.WriteLine($"Request error: {e.Message}");
                 }
             }
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Assembly currentAssem = typeof(Program).Assembly;
+            var versionInfo = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location);
+            // Get the copyright info from versionInfo
+            var copyright = versionInfo.LegalCopyright;
+            // Show the message box
+            MessageBox.Show(currentAssem.GetAssemblyDescription() + "\n\n" + copyright, "About " + Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
