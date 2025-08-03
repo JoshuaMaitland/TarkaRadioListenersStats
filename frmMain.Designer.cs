@@ -135,6 +135,7 @@
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(450, 200);
             this.Name = "frmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tarka Radio Listeners Stats";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
