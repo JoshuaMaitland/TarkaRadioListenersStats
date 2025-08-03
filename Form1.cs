@@ -96,5 +96,21 @@ namespace TarkaRadioListenersStats
             Properties.Settings.Default.Position = Location;
             Properties.Settings.Default.Save();
         }
+
+        private void timerRefresh_Tick(object sender, EventArgs e)
+        {
+            // Check if the computer is connected to the internet
+            if (IsConnectedToInternet() == true)
+            {
+                // If connected, get the listeners statistics
+                GetListeners();
+            }
+            else
+            {
+                // Show a message box if not connected to the internet
+                MessageBox.Show("This program requires an internet connection. Please connect to the internet and try again.", "No Internet Connection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Application.Exit();
+            }
+        }
     }
 }
