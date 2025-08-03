@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.lblListenersCount = new System.Windows.Forms.Label();
             this.lblListenersPeak = new System.Windows.Forms.Label();
             this.timerRefresh = new System.Windows.Forms.Timer(this.components);
@@ -66,6 +67,7 @@
             this.ClientSize = new System.Drawing.Size(434, 161);
             this.Controls.Add(this.lblListenersPeak);
             this.Controls.Add(this.lblListenersCount);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(450, 200);
             this.Name = "Form1";
