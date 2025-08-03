@@ -14,12 +14,12 @@ using System.Windows.Forms;
 
 namespace TarkaRadioListenersStats
 {
-    public partial class Form1 : Form
+    public partial class frmMain : Form
     {
         [DllImport("wininet.dll")]
         private extern static bool InternetGetConnectedState(out int Description, int ReservedValue);
 
-        public Form1()
+        public frmMain()
         {
             InitializeComponent();
         }
@@ -30,7 +30,7 @@ namespace TarkaRadioListenersStats
             return InternetGetConnectedState(out Desc, 0);
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void frmMain_Load(object sender, EventArgs e)
         {
             Location = Properties.Settings.Default.Position;
 
