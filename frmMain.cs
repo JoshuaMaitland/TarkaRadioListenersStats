@@ -66,7 +66,7 @@ namespace TarkaRadioListenersStats
             // Get the copyright info from versionInfo
             var copyright = versionInfo.LegalCopyright;
             // Show the message box
-            MessageBox.Show(currentAssem.GetAssemblyDescription() + "\n\n" + copyright, "About " + Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Views the listeners stats from a Tarka Radio Shoutcast server." + "\n\n" + copyright, "About " + Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void alwaysOnTopToolStripMenuItem_Click(object sender, EventArgs e)
