@@ -1,5 +1,7 @@
 # Tarka Radio Listeners Stats
 
+<img src="https://img.shields.io/github/downloads/JoshuaMaitland/TarkaRadioListenersStats/total?label=Downloads" alt="Downloads"/>
+
 This program will count how many listeners they are when they are listening to Tarka Radio.
 
 Once you started the program, it will update the listeners straight away and updates it every 10 seconds.
